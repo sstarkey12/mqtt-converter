@@ -13,7 +13,7 @@ CMD ["sh", "-c", "python3 meshtastic_protobuf_to_json.py \
     --port ${PORT} \
     --region ${REGION} \
     --root-topic ${ROOT_TOPIC} \
-    ${USERNAME:+--username} ${USERNAME} \
-    ${PASSWORD:+--password} ${PASSWORD} \
-    ${PSK:+--psk} ${PSK} \
-    ${DEBUG:+--debug}"]
+    --username ${USERNAME} \
+    --password ${PASSWORD} \
+    --psk ${PSK} \
+    --debug"]
