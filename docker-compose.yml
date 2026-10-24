@@ -1,32 +1,27 @@
 services:
-  mosquitto:
-    image: eclipse-mosquitto:2-openssl
-    container_name: meshtastic-mosquitto
-    ports:
-      - "1883:1883"
-      - "9001:9001"
-    volumes:
-      - ./mosquitto/config:/mosquitto/config
-      - ./mosquitto/data:/mosquitto/data
-      - ./mosquitto/log:/mosquitto/log
-    restart: unless-stopped
-    networks:
-      - meshtastic-net
 
   converter:
-    build: .
+    # build: 
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: ghcr.io/sstarkey12/mqtt-converter:latest
     container_name: meshtastic-converter
     environment:
-      - BROKER=mosquitto
+      # MQTT broker address and port
+      - BROKER=123.456.78.9
       - PORT=1883
-      - REGION=EU_868
+      # MQTT username
+      - USERNAME=username
+      # MQTT password
+      - PASSWORD=password
+      # Meshtastic config
+      - REGION=us
       - ROOT_TOPIC=msh
-    depends_on:
-      - mosquitto
+      # Leave blank initially. If the ARF channel is encrypted, put its PSK here.
+      - PSK=  
+      # Set to 1 temporarily for troubleshooting
+      - DEBUG=
     restart: unless-stopped
-    networks:
-      - meshtastic-net
+    
 
-networks:
-  meshtastic-net:
-    driver: bridge
+
