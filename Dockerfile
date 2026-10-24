@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY meshtastic_protobuf_to_json.py .
 
-CMD ["python3", "meshtastic_protobuf_to_json.py"] \
+CMD python3 meshtastic_protobuf_to_json.py \
     --broker ${BROKER} \
     --port ${PORT} \
     --region ${REGION} \
