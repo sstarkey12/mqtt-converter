@@ -42,7 +42,7 @@ python3 meshtastic_protobuf_to_json.py \
   --region EU_868 --psk 0x1a1a1a1a2b2b2b2b1a1a1a1a2b2b2b2b
 ```
 
-Or with Docker Compose (~~~includes Mosquitto~~~):
+Or with Docker Compose (~~includes Mosquitto~~):
 
 1. <ins>**Modify `docker-compose.yml` with environment variables for your existing MQTT broker**</ins>
 2. <ins>**Deploy:**</ins>
