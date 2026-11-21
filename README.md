@@ -7,11 +7,15 @@ Bidirectional converter between Meshtastic Protobuf and JSON formats over MQTT, 
 
 It is a drop-in, off-device replacement for the JSON MQTT support that used to be built into the Meshtastic firmware: it republishes encrypted protobuf packets as readable JSON (uplink) and turns JSON commands back into protobuf packets injected into the mesh (downlink). The JSON format matches the firmware's original output field-for-field.
 
+> [!IMPORTANT]
+> This forked version does not include a built-in MQTT broker, it utilizes an existing broker.  
+> Changes to this document will be annotated by <ins>**bold underline**</ins> for additions or by ~~strikethrough~~ for subractions.
+
 ## Features
 
 - **Bidirectional** — Protobuf → JSON (uplink) and JSON → Protobuf (downlink)
 - **Encryption** — AES-128 / AES-256, PSK as hex, base64, or default key
-- **Deployment** — standalone script, Docker, or Docker Compose with a bundled Mosquitto broker
+- **Deployment** — standalone script, Docker, or Docker Compose ~~with a bundled Mosquitto broker~~
 - **Message types** — text, position, node info, telemetry (device / environment / air-quality / power), waypoint, neighbor info, traceroute, detection sensor, paxcounter, and remote-hardware (GPIO)
 
 ## How it works
@@ -38,8 +42,10 @@ python3 meshtastic_protobuf_to_json.py \
   --region EU_868 --psk 0x1a1a1a1a2b2b2b2b1a1a1a1a2b2b2b2b
 ```
 
-Or with Docker Compose (includes Mosquitto):
+Or with Docker Compose (~~~includes Mosquitto~~~):
 
+1. <ins>**Modify `docker-compose.yml` with environment variables for your existing MQTT broker**</ins>
+2. <ins>**Deploy:**</ins>
 ```bash
 docker-compose up -d
 ```
@@ -61,3 +67,4 @@ GNU General Public License v3 or later. This program comes with no warranty; see
 - Examples & guides: [EXAMPLES.md](EXAMPLES.md)
 - Issues: [GitHub Issues](https://github.com/caveman99/meshtastic-mqtt-converter/issues)
 - Meshtastic: [Discord](https://discord.gg/meshtastic)
+- <ins>**Issues specific to this fork: Contact forked repo owner**</ins>
